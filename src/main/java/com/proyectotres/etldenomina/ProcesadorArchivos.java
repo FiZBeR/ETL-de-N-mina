@@ -48,4 +48,14 @@ public class ProcesadorArchivos {
         }
     }
 
+    public void generarReporte(List<String> reporteNuevo){
+        try {
+
+            Path rutaSalida = Path.of("src/reporte.txt");
+            Files.write(rutaSalida, reporteNuevo);
+
+        } catch (IOException i){
+            System.err.println(i.getMessage());
+        }
+    }
 }

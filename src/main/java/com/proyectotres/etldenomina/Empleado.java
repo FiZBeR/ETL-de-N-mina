@@ -48,5 +48,18 @@ public class Empleado {
         this.bonoAdicional = bonoAdicional;
     }
 
+    public static double calcularSalarioTotal(double salarioBase, Double bonoAdicional){
+        if(bonoAdicional == null){
+            return salarioBase;
+        } else {
+            return salarioBase + bonoAdicional;
+        }
+    }
+
+    public static String reporte(Empleado empl){
+        double salarioFinal = calcularSalarioTotal(empl.getSalarioBase(), empl.getBonoAdicional());
+        return "ID: " + empl.getId() + ", Nombre: " + empl.getNombre() + ", Salario Total: $" + salarioFinal;
+    }
+
 
 }

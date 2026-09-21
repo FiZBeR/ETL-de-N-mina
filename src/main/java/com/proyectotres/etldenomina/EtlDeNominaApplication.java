@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class EtlDeNominaApplication {
@@ -21,9 +23,11 @@ public class EtlDeNominaApplication {
 
         List<Empleado> doc = pr.leerEmpleados(rutaEntrada);
 
-        Empleado prueba = doc.get(0);
+        List<String> repo = doc.stream()
+                .map(Empleado::reporte)
+                .collect(Collectors.toList());
 
-        System.out.println("ID: " + prueba.getId() + " Nombre: " + prueba.getNombre() + " Salario: $" + prueba.getSalarioBase() + " Bono: $" + prueba.getBonoAdicional());
+        pr.generarReporte(repo);
     }
 
 }
