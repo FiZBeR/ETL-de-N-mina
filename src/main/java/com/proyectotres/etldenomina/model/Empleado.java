@@ -1,6 +1,4 @@
-package com.proyectotres.etldenomina;
-
-import java.util.List;
+package com.proyectotres.etldenomina.model;
 
 public class Empleado {
 
